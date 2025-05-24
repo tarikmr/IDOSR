@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarik MERRAS - Portfolio Technique</title>
+    <meta name="description" content="Tarik MERRAS - Technicien Spécialisé en Systèmes & Réseaux. Expertise en administration réseau, virtualisation et sécurité informatique.">
+    <meta name="keywords" content="réseaux, systèmes, sécurité, proxmox, cisco, pfsense, technicien, informatique">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background: white;
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(255,255,255,0.95);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .tech-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .icon:hover {
+            transform: translateY(-5px);
+        }
+        
+        .icon i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .icon-windows {
+            top: 20%;
+            left: 10%;
+            background: linear-gradient(135deg, #0078d7 0%, #00a4ef 100%);
+        }
+        
+        .icon-windows i {
+            color: white;
+        }
+        
+        .icon-linux {
+            top: 60%;
+            left: 15%;
+            background: linear-gradient(135deg, #fcc624 0%, #f7df1e 100%);
+        }
+        
+        .icon-linux i {
+            color: #333;
+        }
+        
+        .icon-cisco {
+            top: 30%;
+            left: 70%;
+            background: linear-gradient(135deg, #1ba0d7 0%, #34a0c7 100%);
+        }
+        
+        .icon-cisco i {
+            color: white;
+        }
+        
+        .icon-proxmox {
+            top: 70%;
+            left: 75%;
+            background: linear-gradient(135deg, #e57024 0%, #f18d3e 100%);
+        }
+        
+        .icon-proxmox i {
+            color: white;
+        }
+        
+        /* Main Content */
+        .main {
+            padding: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        /* Experience Section */
+        .experience-item {
+            display: flex;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .experience-date {
+            min-width: 120px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            font-weight: 600;
+        }
+        
+        .experience-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        
+        .experience-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .experience-company {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .experience-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-item {
+            background: #e0f2fe;
+            color: var(--primary-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .skill-icon i {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .skill-title {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .skill-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        
+        /* Progress bars */
+        .progress-container {
+            margin-top: 1rem;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        /* Education Section */
+        .education-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .education-date {
+            min-width: 100px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .education-content {
+            flex: 1;
+        }
+        
+        .education-degree {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .education-school {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        /* Project cards */
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        /* Contact form */
+        .contact-form {
+            display: grid;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid var(--light-gray);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-form button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .contact-form button:hover {
+            background: #0d9f6e;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-item i {
+            color: var(--secondary);
+        }
+        
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .reference-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: left;
+        }
+        
+        .copyright {
+            color: var(--gray);
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .experience-item {
+                flex-direction: column;
+            }
+            
+            .experience-date {
+                width: 100%;
+                padding: 0.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">Tarik MERRAS</div>
+            <div class="nav-links">
+                <a href="#about">Profil</a>
+                <a href="#experience">Expérience</a>
+                <a href="#skills">Compétences</a>
+                <a href="#education">Formation</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+        
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <h1 class="hero-title">Technicien Spécialisé en Systèmes & Réseaux</h1>
+                <p class="hero-subtitle">
+                    Expert en administration réseau, virtualisation et sécurité informatique avec une solide expérience pratique dans des environnements complexes.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-item">Proxmox VE</span>
+                    <span class="tech-item">pfsense</span>
+                    <span class="tech-item">Windows Server</span>
+                    <span class="tech-item">Cisco</span>
+                    <span class="tech-item">VLAN/VPN</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="tech-icons">
+                    <div class="icon icon-windows">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <div class="icon icon-linux">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <div class="icon icon-cisco">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="icon icon-proxmox">
+                        <i class="fas fa-server"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Experience Section -->
+            <section class="section" id="experience">
+                <h2 class="section-title">Expérience Professionnelle</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-date">2023 - 2025</div>
+                    <div class="experience-content">
+                        <h3 class="experience-title">Technicien Réseau</h3>
+                        <div class="experience-company">CELLULE INFORMATIQUE - ISTAG BAB TIZIMI, MEKNÈS</div>
+                        <p class="experience-description">
+                            Gestion complète de l'infrastructure réseau avec résolution d'incidents complexes et optimisation des performances.
+                        </p>
+                        <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--gray); margin-bottom: 1rem;">
+                            <li>Surveillance et optimisation du réseau local (connectivité, performance)</li>
+                            <li>Installation et configuration d'équipements réseau (switches, routeurs, points d'accès)</li>
+                            <li>Déploiement d'infrastructure virtualisation sous Proxmox VE</li>
+                            <li>Configuration de pare-feu pfsense avec règles NAT/VPN/VLAN</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-item"><i class="fas fa-network-wired"></i> Cisco</span>
+                            <span class="tech-item"><i class="fas fa-shield-alt"></i> pfsense</span>
+                            <span class="tech-item"><i class="fas fa-server"></i> Proxmox</span>
+                            <span class="tech-item"><i class="fas fa-ethernet"></i> VLAN</span>
+                            <span class="tech-item"><i class="fas fa-wifi"></i> Wi-Fi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.4rem; margin: 2rem 0 1rem; color: var(--secondary);">Projets Techniques</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/600x400?text=Proxmox+Interface" alt="Interface Proxmox" class="project-image">
+                        <div class="project-content">
+                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #e57024 0%, #f18d3e 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                    <i class="fas fa-server" style="color: white; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="font-weight: 600;">Virtualisation Proxmox</h4>
+                            </div>
+                            <p style="color: var(--gray);">Déploiement d'une infrastructure de virtualisation pour les besoins pédagogiques avec stratégie de sauvegarde.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/600x400?text=pfsense+Firewall" alt="pfsense Firewall" class="project-image">
+                        <div class="project-content">
+                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #1ba0d7 0%, #34a0c7 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                    <i class="fas fa-shield-alt" style="color: white; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="font-weight: 600;">Sécurité Réseau</h4>
+                            </div>
+                            <p style="color: var(--gray);">Mise en place de pare-feu pfsense avec segmentation VLAN et règles de sécurité avancées.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/600x400?text=Network+Monitoring" alt="Monitoring Réseau" class="project-image">
+                        <div class="project-content">
+                            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #10b981 0%, #34d399 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                                    <i class="fas fa-network-wired" style="color: white; font-size: 1.5rem;"></i>
+                                </div>
+                                <h4 style="font-weight: 600;">Monitoring Réseau</h4>
+                            </div>
+                            <p style="color: var(--gray);">Déploiement de solutions Zabbix et PRTG pour la surveillance proactive de l'infrastructure.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Skills Section -->
+            <section class="section" id="skills">
+                <h2 class="section-title">Compétences Techniques</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <h3 class="skill-title">Réseaux</h3>
+                        </div>
+                        <p class="skill-description">
+                            Configuration et administration des équipements réseau (Cisco, Ruijie, HP), gestion des VLAN, VPN, NAT.
+                        </p>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Cisco</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-container" style="margin-top: 0.5rem;">
+                            <div class="progress-label">
+                                <span>VLAN/VPN</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-icon" style="background: linear-gradient(135deg, #0078d7 0%, #00a4ef 100%);">
+                                <i class="fab fa-windows"></i>
+                            </div>
+                            <h3 class="skill-title">Windows Server</h3>
+                        </div>
+                        <p class="skill-description">
+                            Administration des serveurs Windows (AD, DNS, DHCP, GPO), gestion des utilisateurs et permissions.
+                        </p>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Active Directory</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-container" style="margin-top: 0.5rem;">
+                            <div class="progress-label">
+                                <span>GPO</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-icon" style="background: linear-gradient(135deg, #fcc624 0%, #f7df1e 100%);">
+                                <i class="fab fa-linux"></i>
+                            </div>
+                            <h3 class="skill-title">Linux</h3>
+                        </div>
+                        <p class="skill-description">
+                            Administration des systèmes Linux (Ubuntu, CentOS), configuration des services réseau et sécurité.
+                        </p>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Ubuntu</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-container" style="margin-top: 0.5rem;">
+                            <div class="progress-label">
+                                <span>Bash</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-icon" style="background: linear-gradient(135deg, #e57024 0%, #f18d3e 100%);">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3 class="skill-title">Virtualisation</h3>
+                        </div>
+                        <p class="skill-description">
+                            Déploiement et gestion des environnements virtualisés avec Proxmox VE, gestion des machines virtuelles.
+                        </p>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Proxmox VE</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-container" style="margin-top: 0.5rem;">
+                            <div class="progress-label">
+                                <span>Conteneurs LXC</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="skill-title">Sécurité</h3>
+                        </div>
+                        <p class="skill-description">
+                            Configuration des pare-feu pfsense, politiques de sécurité, audits réseau et renforcement des systèmes.
+                        </p>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>pfsense</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-container" style="margin-top: 0.5rem;">
+                            <div class="progress-label">
+                                <span>Audit Sécurité</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-header">
+                            <div class="skill-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h3 class="skill-title">Langues</h3>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Arabe</span>
+                                <span>Langue maternelle</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                                <span>Français</span>
+                                <span>Courant</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                                <span>Anglais</span>
+                                <span>Technique</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Education Section -->
+            <section class="section" id="education">
+                <h2 class="section-title">Formation & Certifications</h2>
+                
+                <div class="education-item">
+                    <div class="education-date">2023 - 2025</div>
+                    <div class="education-content">
+                        <div class="education-degree">Technicien Spécialisé en Systèmes & Réseaux Informatiques</div>
+                        <div class="education-school">ISTAG BAB TIZIMI</div>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-date">2024 - 2025</div>
+                    <div class="education-content">
+                        <div class="education-degree">Formation en Test d'Intrusion en Cybersécurité</div>
+                        <div class="education-school">ISTAG BAB TIZIMI</div>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-date">2021 - 2022</div>
+                    <div class="education-content">
+                        <div class="education-degree">Baccalauréat Sciences et Technologies Électriques</div>
+                        <div class="education-school">LYCÉE MOULAY ISMAIL</div>
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 1.4rem; margin: 2rem 0 1rem; color: var(--secondary);">Certifications</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div style="background: white; border-radius: 10px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; align-items: center;">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #1ba0d7 0%, #34a0c7 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <i class="fas fa-certificate" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.3rem;">CCNA: Introduction to Networks</h4>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Cisco Networking Academy</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; border-radius: 10px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; align-items: center;">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <i class="fas fa-shield-alt" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 600; margin-bottom: 0.3rem;">CCNA: Introduction to Cybersecurity</h4>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Cisco Networking Academy</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer" id="contact">
+            <h2 style="font-size: 1.8rem; margin-bottom: 2rem; color: white;">Contact</h2>
+            
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Votre nom" required>
+                <input type="email" placeholder="Votre email" required>
+                <textarea placeholder="Votre message" rows="4" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>92 Loi Tarik Boufkrane, Meknès</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>tarikmerras20@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+212 693 044430</span>
+                </div>
+            </div>
+            
+            <h3 style="font-size: 1.4rem; margin: 2rem 0 1rem; color: var(--secondary);">Références</h3>
+            <div class="reference-grid">
+                <div class="reference-card">
+                    <h4 style="font-weight: 600; margin-bottom: 0.5rem; color: white;">Dr. Ali Sadiqui</h4>
+                    <p style="color: var(--light-gray); margin-bottom: 0.5rem;">Formateur en Réseaux et Sécurité Informatique</p>
+                    <p style="color: var(--secondary);"><i class="fas fa-phone"></i> +212 667 392228</p>
+                </div>
+                <div class="reference-card">
+                    <h4 style="font-weight: 600; margin-bottom: 0.5rem; color: white;">Moulay Rachid Filali</h4>
+                    <p style="color: var(--light-gray); margin-bottom: 0.5rem;">Formateur Animateur</p>
+                    <p style="color: var(--secondary);"><i class="fas fa-phone"></i> +212 718 691553</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Tarik MERRAS - Tous droits réservés
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Simple form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message! Je vous répondrai dès que possible.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
